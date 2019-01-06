@@ -11,7 +11,7 @@ public final class Pirates implements PirateRoad {
   private static final Map<String, PirateTreasure> ISLANDS;
 
   static {
-    ISLANDS = new java.util.HashMap<>();
+    ISLANDS = new HashMap<>();
     ISLANDS.put("/main", new PirateTreasure("/main", MainActivity.class, false));
     ISLANDS.putAll(SecretPirates.ISLANDS);
   }
