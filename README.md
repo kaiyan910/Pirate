@@ -58,7 +58,7 @@ android {
         ...
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ piratePackage : 'some.unique.package.name', pirateModule : true ]
+                arguments = [ piratePackage : '{replaceWithSubModulePackageName}', pirateModule : true ]
             }
         }
     }
