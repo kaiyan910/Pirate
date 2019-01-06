@@ -76,7 +76,7 @@ kapt {
 
 3. mark your ```Activity``` classes with ```@PirateIsland```
 
-```java
+```kotlin
 @PirateIsland(key = "/main", auth = false)
 class MainActivity : AppCompatActivity() {
     ...
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 ```
 
 4. mark your ```App``` class with ```@Pirate```, you should also pass in the all ```piratePackage``` to ```value```
-```
+```kotlin
 @Pirate(value = ["com.crookk.pirate2"])
 class App : Application() {}
 ```
