@@ -12,8 +12,8 @@ public final class Pirates implements PirateRoad {
 
   static {
     ISLANDS = new java.util.HashMap<>();
-    ISLANDS.put("/main", new com.crookk.pirate.PirateTreasure("/main", com.crookk.pirate.MainActivity.class, false));
-    ISLANDS.putAll(com.crookk.pirate2.SecretPirates.ISLANDS);
+    ISLANDS.put("/main", new PirateTreasure("/main", MainActivity.class, false));
+    ISLANDS.putAll(SecretPirates.ISLANDS);
   }
 
   @Override
@@ -75,6 +75,11 @@ kapt {
 ```
 
 3. mark your ```Activity``` classes with ```@PirateIsland```
+
+|   	| description                                 	| default 	| example 	|
+|------	|---------------------------------------------	|---------	|---------	|
+| key  	| the name/id/key of the activity            	| -       	| "/main" 	|
+| auth 	| showing if the activity is protected or not 	| false   	| false   	|
 
 ```kotlin
 @PirateIsland(key = "/main", auth = false)
