@@ -1,0 +1,1 @@
+include ':app', ':pirate', ':pirate_processor', ':app_2'

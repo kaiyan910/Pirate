@@ -1,0 +1,24 @@
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'java-library'
+
+publish {
+
+    def groupProjectID = 'com.crookk.pirate'
+    def artifactProjectID = 'pirate'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'kaiyan910'
+    repoName = 'Pirate'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = ''
+    website = 'https://github.com/kaiyan910/Pirate'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
