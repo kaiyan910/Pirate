@@ -37,15 +37,15 @@ public final class PirateTreasureMap implements TreasureMap {
 // Java
 dependencies {
   ...
-  implementation 'com.crookk.pirate:pirate:1.0.1'
-  annotationProcessor 'com.crookk.pirate:pirate-compiler:1.0.1'
+  implementation 'com.crookk.pirate:pirate:{latest-version}'
+  annotationProcessor 'com.crookk.pirate:pirate-compiler:{latest-version}'
 }
 
 // Kotlin
 dependencies {
   ...
-  implementation 'com.crookk.pirate:pirate:1.0.1'
-  kapt 'com.crookk.pirate:pirate-compiler:1.0.1'
+  implementation 'com.crookk.pirate:pirate:{latest-version}'
+  kapt 'com.crookk.pirate:pirate-compiler:{latest-version}'
 }
 ```
 
@@ -96,7 +96,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // let teh pirates study the generated map
+        // let the pirates study the generated map
         Pirates.study(PirateTreasureMap())
     }
 }
