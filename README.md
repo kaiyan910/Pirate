@@ -34,6 +34,15 @@ public final class PirateTreasureMap implements TreasureMap {
 
 1. add dependencies
 ```groovy
+
+// currently not available on JCenter yet please add
+repositories {
+    ...
+    maven {
+        url "https://dl.bintray.com/kaiyan910/Pirate"
+    }
+}
+
 // Java
 dependencies {
   ...
@@ -49,7 +58,7 @@ dependencies {
 }
 ```
 
-2. config your sub-module gradle file by adding:
+2. config your sub-module gradle file by adding, you can ignore this step if you only have one module:
 ```groovy
 
 // Java
@@ -89,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-4. mark your ```App``` class with ```@Pirate```, you should also pass in the all ```piratePackage``` to ```value```. Remember to let the ```Pirates``` study the ```PirateTreasureMap```.
+4. mark your ```App``` class with ```@Pirate```, you should also pass in the all ```piratePackage``` to ```value```. You can ignore this step if you only have one module.
 ```kotlin
 @Pirate(value = ["com.crookk.pirate2"])
 class App : Application() {
@@ -102,7 +111,19 @@ class App : Application() {
 }
 ```
 
-5. call ```Pirates``` anywhere to ```sails()``` to the treasure islands.
+5. Let ```Pirates``` study the ```PirateTreasureMap```
+```koltin
+class App : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        // let the pirates study the generated map
+        Pirates.study(PirateTreasureMap())
+    }
+}
+```
+
+6. call ```Pirates``` anywhere to ```sails()``` to the treasure islands.
 ```kotlin
 Pirates.sails("/main")
 ```
