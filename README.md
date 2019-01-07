@@ -104,7 +104,7 @@ class App : Application() {
 ```
 
 5. Let ```Pirates``` study the ```PirateTreasureMap```
-```koltin
+```kotlin
 class App : Application() {
 
     override fun onCreate() {
