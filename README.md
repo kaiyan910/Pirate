@@ -103,3 +103,6 @@ class App : Application() {
 ```
 
 5. call ```Pirates``` anywhere to ```sails()``` to the treasure islands.
+```kotlin
+Pirates.sails("/main")
+```
