@@ -1,12 +1,12 @@
 package com.crookk.pirate;
 
-public class PirateTreasure {
+public class Treasure {
 
     private String key;
     private Class clazz;
     private boolean auth;
 
-    public PirateTreasure(String key, Class clazz, boolean auth) {
+    public Treasure(String key, Class clazz, boolean auth) {
 
         this.key = key;
         this.clazz = clazz;

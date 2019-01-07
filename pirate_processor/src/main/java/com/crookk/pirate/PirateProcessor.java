@@ -43,8 +43,8 @@ public class PirateProcessor extends AbstractProcessor {
     private static final String OPTIONS_PACKAGE = "piratePackage";
     private static final String OPTIONS_MODULE = "pirateModule";
 
-    private static final String GENERATE_CLASS_NAME = "Pirates";
-    private static final String GENERATE_MODULE_CLASS_NAME = "SecretPirates";
+    private static final String GENERATE_CLASS_NAME = "PirateTreasureMap";
+    private static final String GENERATE_MODULE_CLASS_NAME = "SecretPirateMap";
 
     private Messager messager;
     private Elements elements;
@@ -55,7 +55,7 @@ public class PirateProcessor extends AbstractProcessor {
 
     // create a Map<String, Class> variable type
     private ParameterizedTypeName aStringTreasureMapType = ParameterizedTypeName
-            .get(ClassName.get(Map.class), ClassName.get(String.class), ClassName.get(PirateTreasure.class));
+            .get(ClassName.get(Map.class), ClassName.get(String.class), ClassName.get(Treasure.class));
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
@@ -133,7 +133,7 @@ public class PirateProcessor extends AbstractProcessor {
                                               .addModifiers(Modifier.PUBLIC)
                                               .addAnnotation(Override.class)
                                               .addAnnotation(Nullable.class)
-                                              .returns(ClassName.get(DEFAULT_PACKAGE, "PirateTreasure"))
+                                              .returns(ClassName.get(DEFAULT_PACKAGE, "Treasure"))
                                               .addCode(CodeBlock.builder()
                                                                 .addStatement("return ISLANDS.get(key)")
                                                                 .build())
@@ -174,9 +174,9 @@ public class PirateProcessor extends AbstractProcessor {
                                           // mark the class as final public
                                           .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
 
-        // add interface PirateRoad for main module
+        // add interface TreasureMap for main module
         if (compileExtra) {
-            output.addSuperinterface(ClassName.get(PirateRoad.class));
+            output.addSuperinterface(ClassName.get(TreasureMap.class));
         }
 
         // create a CodeBlock for `static { }`
@@ -192,7 +192,7 @@ public class PirateProcessor extends AbstractProcessor {
 
             messager.printMessage(Diagnostic.Kind.NOTE, ">> Add an island called: " + routeKey + ", class: " + activityClass);
 
-            block.addStatement("ISLANDS.put(\"" + routeKey + "\", new " + DEFAULT_PACKAGE + ".PirateTreasure(\"" + routeKey + "\", " + activityClass + ".class, " + island.auth + "))");
+            block.addStatement("ISLANDS.put(\"" + routeKey + "\", new " + DEFAULT_PACKAGE + ".Treasure(\"" + routeKey + "\", " + activityClass + ".class, " + island.auth + "))");
         }
 
         if (compileExtra) {

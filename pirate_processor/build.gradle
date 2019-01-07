@@ -5,7 +5,7 @@ publish {
 
     def groupProjectID = 'com.crookk.pirate'
     def artifactProjectID = 'pirate-compiler'
-    def publishVersionID = '1.0.0'
+    def publishVersionID = '1.0.1'
 
     userOrg = 'kaiyan910'
     repoName = 'Pirate'

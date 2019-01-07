@@ -1,3 +1,5 @@
+[![Download](https://api.bintray.com/packages/kaiyan910/Pirate/pirate/images/download.svg?version=1.0.1)](https://bintray.com/kaiyan910/Pirate/pirate/1.0.1/link)
+
 # Pirate
 
 Pirate is a multi-module ```Activity``` collecting library.
@@ -5,25 +7,24 @@ Pirate is a multi-module ```Activity``` collecting library.
 The annotation processor will generate a class below:
 
 ``` java
+public final class PirateTreasureMap implements TreasureMap {
 
-public final class Pirates implements PirateRoad {
-
-  private static final Map<String, PirateTreasure> ISLANDS;
+  private static final Map<String, Treasure> ISLANDS;
 
   static {
-    ISLANDS = new HashMap<>();
-    ISLANDS.put("/main", new PirateTreasure("/main", MainActivity.class, false));
-    ISLANDS.putAll(SecretPirates.ISLANDS);
+    ISLANDS = new java.util.HashMap<>();
+    ISLANDS.put("/main", new Treasure("/main", MainActivity.class, false));
+    ISLANDS.putAll(SecretPirateMap.ISLANDS);
   }
 
   @Override
   @Nullable
-  public PirateTreasure sail(String key) {
+  public Treasure sail(String key) {
     return ISLANDS.get(key);
   }
 
   @Override
-  public Map<String, PirateTreasure> islands() {
+  public Map<String, Treasure> islands() {
     return ISLANDS;
   }
 }
@@ -36,15 +37,15 @@ public final class Pirates implements PirateRoad {
 // Java
 dependencies {
   ...
-  implementation 'com.crookk.pirate:pirate:1.0.0'
-  annotationProcessor 'com.crookk.pirate:pirate-compiler:1.0.0'
+  implementation 'com.crookk.pirate:pirate:1.0.1'
+  annotationProcessor 'com.crookk.pirate:pirate-compiler:1.0.1'
 }
 
 // Kotlin
 dependencies {
   ...
-  implementation 'com.crookk.pirate:pirate:1.0.0'
-  kapt 'com.crookk.pirate:pirate-compiler:1.0.0'
+  implementation 'com.crookk.pirate:pirate:1.0.1'
+  kapt 'com.crookk.pirate:pirate-compiler:1.0.1'
 }
 ```
 
@@ -88,8 +89,17 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-4. mark your ```App``` class with ```@Pirate```, you should also pass in the all ```piratePackage``` to ```value```
+4. mark your ```App``` class with ```@Pirate```, you should also pass in the all ```piratePackage``` to ```value```. Remember to let the ```Pirates``` study the ```PirateTreasureMap```.
 ```kotlin
 @Pirate(value = ["com.crookk.pirate2"])
-class App : Application() {}
+class App : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        // let teh pirates study the generated map
+        Pirates.study(PirateTreasureMap())
+    }
+}
 ```
+
+5. call ```Pirates``` anywhere to ```sails()``` to the treasure islands.
