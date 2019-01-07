@@ -35,14 +35,6 @@ public final class PirateTreasureMap implements TreasureMap {
 1. add dependencies
 ```groovy
 
-// currently not available on JCenter yet please add
-repositories {
-    ...
-    maven {
-        url "https://dl.bintray.com/kaiyan910/Pirate"
-    }
-}
-
 // Java
 dependencies {
   ...
